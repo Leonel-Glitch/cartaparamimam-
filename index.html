@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta para Mamá</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    }
+    .screen {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: opacity 1s ease;
+    }
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .welcome-screen {
+      background: #fff;
+      color: #d6336c;
+      text-align: center;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 1s ease forwards, bounce 2s ease-in-out infinite;
+    }
+    .welcome-screen h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      animation: float 2s ease-in-out infinite;
+    }
+    .welcome-screen p {
+      font-size: 1.5rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    .open-btn {
+      margin-top: 1rem;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #d6336c;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      animation: popIn 1s ease-in-out;
+    }
+    .open-btn:hover {
+      background-color: #c0255a;
+    }
+    .card-screen {
+      padding-top: 100px;
+      overflow-y: auto;
+      height: 100vh;
+      width: 100vw;
+      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+      color: #3b3b3b;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .card {
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+    .card-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #d6336c;
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 1rem 0;
+    }
+    .card p {
+      line-height: 1.8;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    @keyframes popIn {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+      }
+      20% { opacity: 1; }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    .petal, .strawberry {
+      position: fixed;
+      top: 0;
+      width: 25px;
+      height: 25px;
+      background-size: cover;
+      opacity: 0.7;
+      animation: fall linear infinite;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .petal {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/415/415733.png');
+    }
+    .strawberry {
+      background-image: url('https://cdn-icons-png.flaticon.com/512/590/590685.png');
+    }
+  </style>
+</head>
+<body>
+  <div class="screen welcome-screen" id="welcome">
+    <h1>Hola Mami, tengo algo especial para ti...</h1>
+    <p>Haz clic en el botón para descubrirlo.</p>
+    <button class="open-btn" onclick="openCard()">Abrir Carta</button>
+  </div>
+
+  <div class="screen card-screen hidden" id="card">
+    <div class="card">
+      <h2 class="card-title">Carta para Mamá</h2>
+      <p>Querida Gladys,</p>
+      <p>Llamarte “mamá” es mucho más que una palabra para mí… es una forma de decirle al mundo que tengo la suerte de tener a la mejor. Y no lo digo por compromiso, lo digo desde lo más profundo de mi corazón.</p>
+      <p>No sé si algún día voy a encontrar una forma exacta de expresar todo lo que siento por ti, pero hoy quiero intentarlo, porque tú te mereces cada intento, cada palabra y cada abrazo. Tú eres mi refugio, mi impulso y esa voz que, incluso en silencio, me anima a seguir adelante cuando más lo necesito.</p>
+      <p>Gracias por enseñarme lo que nadie más pudo: que el amor verdadero se demuestra en los detalles, en los silencios que acompañan, en las miradas que cuidan y en los sacrificios que muchas veces ni vemos, pero que ahí están, sosteniéndonos. Tú me enseñaste a levantar la cabeza con dignidad, a ser fuerte sin dejar de ser sensible, y a luchar por lo que quiero sin olvidarme de dónde vengo.</p>
+      <p>Has estado a mi lado en cada caída, y también en cada pequeño logro, celebrándome como si fuera lo más grande del mundo. Has sido mi maestra, mi amiga, mi ejemplo. Has sido mi casa, incluso cuando no estábamos en casa.</p>
+      <p>Hoy, en tu día, quiero recordarte que todo lo bueno que hay en mí viene de ti. Que mi camino tiene tus huellas, y que no importa cuántos años pasen ni cuántas vueltas dé la vida… tú siempre vas a ser mi lugar seguro.</p>
+      <p>Gracias por ser tú. Por darme tanto. Por amarme de la forma más pura que existe.</p>
+      <p><strong>Feliz Día de la Madre, con todo mi amor,</strong><br>Leonel</p>
+    </div>
+  </div>
+
+  <script>
+    const welcome = document.getElementById('welcome');
+    const card = document.getElementById('card');
+
+    function openCard() {
+      welcome.classList.add('hidden');
+      card.classList.remove('hidden');
+      startAnimation();
+    }
+
+    function createFallingElement(className) {
+      const el = document.createElement('div');
+      el.className = className;
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.animationDuration = (3 + Math.random() * 5) + 's';
+      el.style.width = el.style.height = (20 + Math.random() * 15) + 'px';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 10000);
+    }
+
+    function startAnimation() {
+      setInterval(() => {
+        createFallingElement('petal');
+        createFallingElement('strawberry');
+      }, 500);
+    }
+  </script>
+</body>
+</html>
